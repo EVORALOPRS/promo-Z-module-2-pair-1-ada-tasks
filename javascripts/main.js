@@ -16,9 +16,23 @@ const list = document.querySelector('.js-list');
 
 
 for (let i = 0; i < tasks.length; i++){
-    list.innerHTML += `<li>
+    let style= "";
+    if(tasks[i].completed=== true){
+      style="decoration";
+    }
+    list.innerHTML += `<li class= "${style}">
 <input id="1" type="checkbox">
 ${tasks[i].name}
 </li>`
 }
  
+/*4. Listado de tareas.
+Ahora vamos a pintar en pantalla todas la tareas que tenemos en el listado,
+A continuación vamos a preparar una clase que la modifique, de manera que si fuera una tarea completada completed: true, el texto aparezca tachado.*/
+
+
+
+
+
+
+
