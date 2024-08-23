@@ -1,5 +1,5 @@
 'use strict';
-const tasks = [
+/*const tasks = [
   { name: 'Recoger setas en el campo', completed: true, id: 1 },
   { name: 'Comprar pilas', completed: true, id: 2 },
   { name: 'Poner una lavadora de blancos', completed: true, id: 3 },
@@ -9,8 +9,13 @@ const tasks = [
     id: 4,
   },
 ];
-
+*/
 const listUl = document.querySelector('.js-list');
+const GITHUB_USER = "rocio-ld";
+const SERVER_URL = `https://dev.adalab.es/api/todo/${GITHUB_USER}`;
+let tasks =[];
+
+
 /*
     escuchar eventos del usuario--> datos de entrada
     modificar mis datos 
@@ -60,6 +65,18 @@ const handleSearch = (event) => {
   renderTasks(filterTasks);
 };
 btnSearch.addEventListener('click', handleSearch);
+
+//Para pintar lo que hemos obtenido del servidor tenemos que llamar a la funcion renderTasks, y como esta creada hay que poner este ejercicio debajo de la función.
+
+fetch(SERVER_URL)
+.then((response)=>response.json())
+.then(data=>{
+console.log(data);
+tasks=data.results;
+renderTasks(tasks);
+});
+
+
 
 
 /*4. Listado de tareas.
