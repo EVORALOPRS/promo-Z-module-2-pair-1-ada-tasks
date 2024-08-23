@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Document</title>
-</head>
-<body>
-    <header>AdaTasks</header>
-    <main>
-        <section>
-            <form action="">
-                <label for=""></label>
-                <input type="text" placeholder="Nueva Tarea">
-                <button class="js-btn-add">Agregar</button>
-            </form>
-        </section>
-        <section>
-            <form class="js-form" action="">
-                <label for="" ></label>
-                <input type="text" placehorlder="Ejemplo: gim">
-                <button class="js-btn-search" >Buscar</button>
-            </form>
-            <ul class="js-list">
-             <!--   <li>
-                    <input id="1" type="checkbox">
-                    Recoger setas en el campo
-                </li>
-                <li>
-                    <input id="2" type="checkbox">
-                    Comprar pilas
-                </li>
-                <li>
-                    <input id="3" type="checkbox">
-                    Poner una lavadora de blancos
-                </li>
-                <li>
-                    <input id="4" type="checkbox">
-                    Aprender cómo se realizan las peticiones al servidor en JavaScript
-                </li>-->
-            </ul>  
-        </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <title>Lista de Tareas</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">AdaTasks</h1>
+    </header>
+    <main class="main">
+      <section class="container add">
+        <form class="task-form-add">
+          <input
+            type="text"
+            class="task-input js-text-task-add"
+            placeholder="Nueva tarea"
+          />
+          <button class="add-task-btn js-btn-add">Agregar</button>
+        </form>
+      </section>
+
+      <section class="container">
+        <form class="task-form">
+          <input
+            type="text"
+            class="task-input js-text-task-filter"
+            placeholder="Ejemplo: gim"
+          />
+          <button class="add-task-btn js-btn-filter">Buscar</button>
+        </form>
+        <ul class="task-list js-list">
+          <!-- Aquí se mostrarán las tareas -->
+        </ul>
+      </section>
     </main>
-    <script src="./javascripts/main.js"></script>
-</body>
+
+    <script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuidv4.min.js"></script>
+  </body>
 </html>
