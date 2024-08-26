@@ -27,7 +27,11 @@ const handleCheckbox = (ev) => {
   const positionTask = tasks.findIndex((task) => task.id === taskClicked);
   tasks[positionTask].completed = !tasks[positionTask].completed;
   renderTasks(tasks);
+  console.log(tasks)
+
+  localStorage.setItem('data',JSON.stringify(tasks))
 };
+
 //escuchar eventos sobre los checkbox
 function listenCheckbox() {
   const inputsCheckbox = document.querySelectorAll('.js-checkbox');
@@ -68,20 +72,48 @@ btnSearch.addEventListener('click', handleSearch);
 
 //Para pintar lo que hemos obtenido del servidor tenemos que llamar a la funcion renderTasks, y como esta creada hay que poner este ejercicio debajo de la función.
 
-fetch(SERVER_URL)
-.then((response)=>response.json())
-.then(data=>{
-console.log(data);
-tasks=data.results;
-renderTasks(tasks);
+
+
+// cambiamos los datos de con JSON.parse lo cambiamos con un array 
+const tasksLocalStorage = JSON.parse(localStorage.getItem("data"));
+console.log(tasksLocalStorage)
+if(tasksLocalStorage !== null){
+ tasks = tasksLocalStorage
+
+  renderTasks(tasksLocalStorage);
+  
+} else{
+  fetch(SERVER_URL)
+ .then((response)=>response.json())
+ .then(data=>{
+     console.log(data);
+     tasks=data.results;
+     renderTasks(tasks);
+
+// con el setItem guarda los datos,lo tenemos en formato primitivo 
+localStorage.setItem('data',JSON.stringify(data.results))
 });
+  
+}
+
+
 
 
 
 
 /*4. Listado de tareas.
+
 Ahora vamos a pintar en pantalla todas la tareas que tenemos en el listado,
 A continuación vamos a preparar una clase que la modifique, de manera que si fuera una tarea completada completed: true, el texto aparezca tachado.*/
+
+// Realizamos un GET( creando una constante que nos da un string)
+
+
+
+
+
+
+
 
 
 /*const list = document.querySelector('.js-list');
