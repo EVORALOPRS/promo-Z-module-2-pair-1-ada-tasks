@@ -41,23 +41,53 @@ function listenCheckbox() {
   }
 }
 // pintar  lista de tareas
-const renderTasks = (array) => {
+/*const renderTasks = (array) => {
   listUl.innerHTML = '';
   for (let i = 0; i < array.length; i++) {
     //cada tarea --> task[i] ->  { name: 'x', completed: x, id: x },
     listUl.innerHTML += `
      <li class= "${array[i].completed ? 'tachado' : null}">
-        <input type="checkbox"  ${
-          array[i].completed ? 'checked' : null
-        } class="js-checkbox" id="${array[i].id}"/>
-        ${array[i].name}
+        <input type="checkbox"  ${array[i].completed ? 'checked' : null
+        } class="js-checkbox" id="${array[i].id}"/> ${array[i].name}
     </li>
     `;
   }
 
   listenCheckbox();
 };
+renderTasks(tasks);*/
+
+// Cambiar la lista con el DOM
+
+const renderTasks = (elements) => {
+  listUl.innerHTML = '';
+  for (const eachElement of elements ){
+    const newList = document.createElement('li');
+    listUl.appendChild (newList)
+    newList.setAttribute("class",eachElement.completed ? 'tachado' : null)
+
+    const newInput = document.createElement('input');
+    newList.appendChild(newInput)
+    newInput.setAttribute('type','checkbox');
+    newInput.setAttribute('class','js-checkbox');
+    newInput.setAttribute('id',eachElement.id);
+    if(eachElement.completed){
+      newInput.checked = true
+    };
+
+    const counterList = document.createTextNode(eachElement.name)
+    newList.appendChild(counterList)
+
+  };
+
+  listenCheckbox();
+};
+
 renderTasks(tasks);
+
+
+
+
 
 const btnSearch = document.querySelector('.js-btn-filter');
 const inputSearch = document.querySelector('.js-text-task-filter');
@@ -98,22 +128,12 @@ localStorage.setItem('data',JSON.stringify(data.results))
 
 
 
-
-
-
 /*4. Listado de tareas.
 
 Ahora vamos a pintar en pantalla todas la tareas que tenemos en el listado,
 A continuación vamos a preparar una clase que la modifique, de manera que si fuera una tarea completada completed: true, el texto aparezca tachado.*/
 
 // Realizamos un GET( creando una constante que nos da un string)
-
-
-
-
-
-
-
 
 
 /*const list = document.querySelector('.js-list');
